@@ -4,7 +4,7 @@ from botasaurus.request import request, Request
 import json
 import re
 import pandas as pd
-import urllib.parse  # ✅ Import fixed
+import urllib.parse  
 
 def extract_phone_number(huge_string):
     """Extracts a 10-digit phone number from 'tel:+1XXXXXXXXXX' format."""
@@ -72,7 +72,7 @@ def has_reached_end(driver):
 
 def format_google_maps_url(query):
     """Formats the search query into a Google Maps search URL."""
-    encoded_query = urllib.parse.quote_plus(query)  # ✅ URL encoding fixed
+    encoded_query = urllib.parse.quote_plus(query)  
     return f"https://www.google.com/maps/search/{encoded_query}"
 
 @browser()
@@ -105,10 +105,10 @@ def scrape_google_maps(driver: Driver, query):
 
     results = scrape_place_obj.get()
 
-    # ✅ Return a JSON-serializable list of dictionaries
+
     return results if results else []
 
-# Example usage
+
 user_query = input("Enter search query (e.g., 'coffee shops near New York'): ")
 results = scrape_google_maps(user_query)
 df = pd.DataFrame(results)
